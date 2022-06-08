@@ -1,0 +1,13 @@
+.navList {
+  list-style: none;
+}
+
+.link {
+  color: #000;
+  text-decoration: none;
+}
+
+.activeLink {
+  color: palevioletred;
+  text-decoration: none;
+}
