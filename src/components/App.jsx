@@ -12,7 +12,8 @@ export const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
-        <Route path="*" element={<HomePage />} />
+        <Route path="*" element={<HomePage />} />{' '}
+        {/* * === Redirect react-router-dom 5 */}
       </Routes>
     </>
   );

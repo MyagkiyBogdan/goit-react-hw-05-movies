@@ -1,6 +1,7 @@
 import styles from './HomePage.module.css';
 import * as filmsAPI from '../../api/fetchFilms';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   const [films, setFilms] = useState([]);
@@ -19,7 +20,11 @@ export default function HomePage() {
         {films &&
           films.map(film => {
             return (
-              <li key={film.id}>{film.original_name || film.original_title}</li>
+              <li key={film.id}>
+                <Link to={`movies/${film.id}`}>
+                  {film.original_name || film.original_title}
+                </Link>
+              </li>
             );
           })}
       </ul>

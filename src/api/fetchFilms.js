@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.themoviedb.org/3/';
+const BASE_URL = 'https://api.themoviedb.org/3';
 const KEY = '?api_key=2ddded2d287329b6efbf335a6f8f3bd4';
 // 'https://api.themoviedb.org/3/movie/550?api_key=2ddded2d287329b6efbf335a6f8f3bd4';
 
@@ -13,8 +13,8 @@ export function fetchTrending() {
   return fetchFilms(`${BASE_URL}/trending/all/day${KEY}`);
 }
 
-export function searchMovies() {
-  return fetchFilms(`${BASE_URL}/search/search-movies/`);
+export function searchMovies(movie) {
+  return fetchFilms(`${BASE_URL}/search/movie${KEY}&query=${movie}`);
 }
 
 export function getOneMovieDetails() {
