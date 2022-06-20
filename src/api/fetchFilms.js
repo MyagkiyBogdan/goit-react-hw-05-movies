@@ -17,8 +17,8 @@ export function searchMovies(movie) {
   return fetchFilms(`${BASE_URL}/search/movie${KEY}&query=${movie}`);
 }
 
-export function getOneMovieDetails() {
-  return fetchFilms(`${BASE_URL}/movies/get-movie-details`);
+export function getOneMovieDetails(movieId) {
+  return fetchFilms(`${BASE_URL}/movie/${movieId}${KEY}`);
 }
 
 export function getOneMovieActors() {

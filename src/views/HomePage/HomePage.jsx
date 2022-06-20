@@ -8,7 +8,6 @@ export default function HomePage() {
 
   useEffect(() => {
     filmsAPI.fetchTrending().then(result => {
-      console.log(result.results);
       return setFilms(result.results);
     });
   }, []);

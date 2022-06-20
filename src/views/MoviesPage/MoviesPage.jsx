@@ -14,14 +14,12 @@ export default function MoviesPage() {
       return;
     }
     filmsAPI.searchMovies(search).then(response => {
-      console.log(response);
       return setFilms(response.results);
     });
   }, [search]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(e.target.searchInput.value);
     setSearch(e.target.searchInput.value);
     navigate(`${pathname}?query=${e.target.searchInput.value}`);
   };
