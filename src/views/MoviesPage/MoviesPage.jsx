@@ -1,13 +1,24 @@
 import styles from './MoviesPage.module.css';
 import { useState, useEffect } from 'react';
 import * as filmsAPI from '../../api/fetchFilms';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom';
 
 export default function MoviesPage() {
   const [search, setSearch] = useState('');
   const [films, setFilms] = useState(null);
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const location = useLocation();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const name = searchParams.get('name');
+
+  // Делал до обновления конспекта, без useSearchParams. Такой способ рабочий или делать только const [searchParams, setSearchParams] = useSearchParams()?
 
   useEffect(() => {
     if (!search) {
@@ -35,7 +46,7 @@ export default function MoviesPage() {
         films.map(film => {
           return (
             <li key={film.id}>
-              <Link to={`${pathname}/${film.id}`}>
+              <Link to={`${pathname}/${film.id}`} state={{ from: location }}>
                 {film.original_name || film.original_title}
               </Link>
             </li>

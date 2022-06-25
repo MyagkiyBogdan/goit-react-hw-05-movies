@@ -21,10 +21,10 @@ export function getOneMovieDetails(movieId) {
   return fetchFilms(`${BASE_URL}/movie/${movieId}${KEY}`);
 }
 
-export function getOneMovieActors() {
-  return fetchFilms(`${BASE_URL}/movies/get-movie-credits`);
+export function getOneMovieActors(movieId) {
+  return fetchFilms(`${BASE_URL}/movie/${movieId}/credits${KEY}`);
 }
 
-export function getOneMovieReviewes() {
-  return fetchFilms(`${BASE_URL}/movies/get-movie-reviews`);
+export function getOneMovieReviewes(movieId) {
+  return fetchFilms(`${BASE_URL}/movie/${movieId}/reviews${KEY}`);
 }

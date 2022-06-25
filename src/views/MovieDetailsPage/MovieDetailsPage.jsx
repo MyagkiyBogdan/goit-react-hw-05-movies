@@ -1,4 +1,4 @@
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams, Link, useLocation } from 'react-router-dom';
 import styles from './MovieDetailsPage.module.css';
 import { getOneMovieDetails } from 'api/fetchFilms';
 import { useEffect, useState } from 'react';
@@ -8,6 +8,8 @@ export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
     getOneMovieDetails(movieId)
@@ -18,6 +20,7 @@ export default function MovieDetailsPage() {
   return (
     <>
       <h1>MovieDetailsPage</h1>
+      <Link to={backLinkHref}>Back</Link>
       {movie && (
         <>
           <div>
@@ -39,15 +42,15 @@ export default function MovieDetailsPage() {
             <h2>Additional information</h2>
             <ul>
               <li>
-                <NavLink to={`cast`}>Cast</NavLink>
+                <NavLink to="cast">Cast</NavLink>
               </li>
               <li>
-                <NavLink to={`reviews`}>Reviews</NavLink>
+                <NavLink to="reviews">Reviews</NavLink>
               </li>
             </ul>
-            <div>Content will be here</div>
-            <Outlet />
           </div>
+
+          <Outlet />
         </>
       )}
       {error && <h2>Sorry! Backend problem, {error.message}</h2>}
