@@ -8,7 +8,7 @@ import Reviews from 'views/Reviews';
 
 export const App = () => {
   return (
-    <>
+    <div className="app">
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -34,6 +34,6 @@ export const App = () => {
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes> */}
-    </>
+    </div>
   );
 };
