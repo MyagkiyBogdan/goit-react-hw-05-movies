@@ -11,6 +11,7 @@ export default function MoviesPage() {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
+  console.log(query);
 
   useEffect(() => {
     if (!query) {
@@ -23,8 +24,10 @@ export default function MoviesPage() {
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    setSearchParams({ query: e.target.searchInput.value });
+    if (!e.target.searchInput.value.trim()) {
+      return;
+    }
+    setSearchParams({ query: e.target.searchInput.value.trim() });
     // navigate(`${pathname}?query=${e.target.searchInput.value}`);
   };
 
