@@ -10,7 +10,7 @@ async function fetchFilms(url) {
 }
 
 export function fetchTrending() {
-  return fetchFilms(`${BASE_URL}/trending/all/day${KEY}`);
+  return fetchFilms(`${BASE_URL}/trending/movie/day${KEY}`);
 }
 
 export function searchMovies(movie) {

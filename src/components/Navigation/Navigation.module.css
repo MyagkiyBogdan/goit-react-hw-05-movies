@@ -2,6 +2,8 @@
   list-style: none;
   display: flex;
   gap: 10px;
+  padding-left: 0;
+  font-size: 20px;
 }
 
 .link {

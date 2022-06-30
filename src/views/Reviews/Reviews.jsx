@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import styles from './Reviews.module.css';
 import { getOneMovieReviewes } from '../../api/fetchFilms';
 import { useParams } from 'react-router-dom';
 

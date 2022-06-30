@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getOneMovieActors } from '../../api/fetchFilms';
 import { useParams } from 'react-router-dom';
-import styles from './Cast.module.css';
 
 export default function Cast() {
   const [cast, setCast] = useState(null);

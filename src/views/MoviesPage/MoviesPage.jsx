@@ -1,46 +1,39 @@
-import styles from './MoviesPage.module.css';
 import { useState, useEffect } from 'react';
 import * as filmsAPI from '../../api/fetchFilms';
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { PageTitle, Button, Input } from './MoviesPage.styled';
 
 export default function MoviesPage() {
-  const [search, setSearch] = useState('');
   const [films, setFilms] = useState(null);
-  const navigate = useNavigate();
+
   const { pathname } = useLocation();
   const location = useLocation();
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const name = searchParams.get('name');
-
-  // Делал до обновления конспекта, без useSearchParams. Такой способ рабочий или делать только const [searchParams, setSearchParams] = useSearchParams()?
+  const query = searchParams.get('query');
 
   useEffect(() => {
-    if (!search) {
+    if (!query) {
       return;
     }
-    filmsAPI.searchMovies(search).then(response => {
+    filmsAPI.searchMovies(query).then(response => {
       return setFilms(response.results);
     });
-  }, [search]);
+  }, [query]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    setSearch(e.target.searchInput.value);
-    navigate(`${pathname}?query=${e.target.searchInput.value}`);
+
+    setSearchParams({ query: e.target.searchInput.value });
+    // navigate(`${pathname}?query=${e.target.searchInput.value}`);
   };
 
   return (
     <>
-      <h1>MoviesPage</h1>
+      <PageTitle>MoviesPage</PageTitle>
       <form onSubmit={handleSubmit}>
-        <input name="searchInput" />
-        <button type="submit">Search</button>
+        <Input name="searchInput" />
+        <Button type="submit">Search</Button>
       </form>
       {films &&
         films.map(film => {
